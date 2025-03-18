@@ -3,6 +3,7 @@ package com.simulation._3.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -19,6 +20,22 @@ public class Project {
     private LocalDate endDate;
 
     private Double budget;
+
+    @ManyToMany
+    @JoinTable(
+            name = "employee_projects",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "emp_id")
+    )
+    private List<Employee> employees;
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public Project() {
     }

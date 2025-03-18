@@ -1,7 +1,7 @@
 package com.simulation._3.model;
 
 import jakarta.persistence.*;
-
+import java.util.*;
 import java.time.LocalDate;
 
 @Entity
@@ -22,6 +22,9 @@ public class Employee {
     private String country;
     private String phoneNumber;
 
+    @ManyToMany(mappedBy = "employees")
+    private List<Project> projects;
+
     public Employee() {
     }
 
@@ -36,6 +39,14 @@ public class Employee {
         this.city = city;
         this.country = country;
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public Long getEmpId() {
