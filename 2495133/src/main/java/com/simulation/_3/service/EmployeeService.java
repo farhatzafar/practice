@@ -17,4 +17,14 @@ public class EmployeeService {
         return repository.findById(employeeId);
     }
 
+    public void createEmployee(String firstName, String lastName, String department) {
+        if (firstName == null || firstName.isBlank() || lastName == null || lastName.isBlank()
+                || department == null || department.isBlank()) {
+            throw new RuntimeException();
+        } else {
+            repository.save(new Employee(firstName, lastName, department));
+        }
+    }
+
+
 }

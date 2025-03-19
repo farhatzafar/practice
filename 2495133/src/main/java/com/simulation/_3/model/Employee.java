@@ -41,6 +41,12 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
+    public Employee(String firstName, String lastName, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.department = department;
+    }
+
     public List<Project> getProjects() {
         return projects;
     }
